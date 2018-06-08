@@ -1,4 +1,5 @@
 from kmeans import KMeans
+import sys
 
 def column(matrix, i):
 	return [row[i] for row in matrix]
@@ -35,7 +36,7 @@ points = []
 initial = []
 m = []
 s = []
-file = open("NC_000867.med", "r")
+file = open(sys.args[0], "r")
 file.next()
 for line in file:
     row = []
@@ -57,7 +58,10 @@ for line in file:
             point.append( (float(aa)-m[i])/s[i] )
     points.append(point)
 
-
-kmeans = KMeans(n_clusters=2).fit(x)
+aa = list('ARNDCEQGHILKMFPSTWYV')
+kmeans = KMeans(n_clusters=2).fit(points)
 #print kmeans.labels_
-#print kmeans.cluster_centers_
+for i, c in enumerate(kmeans.cluster_centers_):
+	for j, p in enumerate(c.coords):
+		print i, aa[j], p
+

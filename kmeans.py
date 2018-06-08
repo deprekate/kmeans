@@ -14,6 +14,7 @@ class KMeans():
 		self.max_iter = max_iter
 		self.tol = tol
 		self.cluster_centers_ = []
+		self.labels_ = []
 
 	def fit(self, X):
 		points = []
@@ -28,8 +29,9 @@ class KMeans():
 		for c in self.best_clusters:
 			self.cluster_centers_.append(c.centroid)
 		for p in points:
-			print p
-		print type(self.best_clusters[0])
+			for i, c in enumerate(self.best_clusters):
+				if c.has_point(p):
+					self.labels_.append(i)
 		return self
 
 
@@ -58,7 +60,6 @@ def iterative_kmeans(points, num_clusters, cutoff, iteration_count):
 	lowest_error = min(errors)
 	ind_of_lowest_error = errors.index(lowest_error)
 	best_clusters = candidate_clusters[ind_of_lowest_error]
-
 	return best_clusters
 
 def kmeans(points, k, cutoff, initial_centroids=False):
@@ -173,6 +174,11 @@ class Cluster(object):
 		String representation of this object
 		'''
 		return str(self.points)
+	def has_point(self, point):
+		'''
+		Check if cluster has point
+		'''
+		return point in self.points
 
 	def update(self, points):
 		'''
