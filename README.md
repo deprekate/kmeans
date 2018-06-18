@@ -2,7 +2,7 @@
 A python implementation of the kmeans algorithm that functions as a drop in for sklearn
 This way you include this script in with your tarballed python code, so users wont have to seperately install sklearn
 
-To use, simply include the kmeans.py file in the root directory with your code, and import it.
+To use, simply include the **kmeans.py** file in the root directory with your code, and import it.
 
 Then use it the same as you would calls sklearn:
 ```sh
