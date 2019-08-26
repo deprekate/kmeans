@@ -1,4 +1,4 @@
-#kmeans
+# kmeans
 A python implementation of the kmeans algorithm that functions as a drop in for sklearn, albeit more slow.
 
 This way you just include this script in with your tarballed python code, and users won't have to seperately install sklearn
